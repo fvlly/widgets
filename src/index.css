@@ -1,0 +1,79 @@
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.accordion-container {
+    cursor: pointer;
+    width: 300px;
+
+    margin: 0.5em 0.25em;
+    padding: 0.5em;
+    border: 1px solid #0F0E0E;
+    color:#086E7D;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.75em;
+    border-bottom: 0.5px dotted #086E7D;
+}
+
+.content {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.searchBar {
+    border-radius: 0.5em;
+    
+    width: 80%;
+    margin: 0.5em auto;
+    border: 1px solid #0F0E0E;
+    padding: 0.75em 0.5em;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #086E7D;
+    margin-top: 0.5em;
+    padding: 0.5em;
+    outline: none;
+    border-radius: 0.25em;
+}
+
+.list {
+    display: flex;
+}
+
+.right-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    height: 50px;
+    background-color: #086E7D;
+    margin: 0.5em;
+}
+
+
+.right-btn a {
+    text-decoration: none;
+    color: #D3DEDC;
+}
+
+
+.container {
+    padding-inline: 2em;
+    line-height: 1.4;
+    font-size: 1.125;
+    margin: 1em auto;
+}
