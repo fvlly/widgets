@@ -3,6 +3,7 @@ import wiki from "../apis/wiki";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("man");
+  const [debouncedTerm, setdebouncedTerm] = useState(searchTerm);
   const [listItems, setListItems] = useState([]);
 
   function handleChange(e) {
@@ -11,13 +12,25 @@ const SearchBar = () => {
   }
 
   useEffect(() => {
+    const timerId = setTimeout(() => {
+      setdebouncedTerm(searchTerm);
+    }, 700);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [searchTerm]);
+
+  useEffect(() => {
     const search = async (req, res) => {
       try {
         const searchedTerm = await wiki.get("", {
           params: {
-            srsearch: searchTerm,
+            srsearch: debouncedTerm,
           },
         });
+
+        // nested destructuring to retrieve fetched data
         const {
           data: {
             query: { search: foundItems },
@@ -29,17 +42,10 @@ const SearchBar = () => {
       }
     };
 
-    if (searchTerm && !listItems.length) {
+    if (debouncedTerm) {
       search();
     }
-    const timeoutId = setTimeout(() => {
-      if (searchTerm) search();
-    }, 500);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [searchTerm,listItems.length]);
+  }, [debouncedTerm]);
 
   return (
     <>

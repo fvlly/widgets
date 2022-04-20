@@ -43,12 +43,12 @@ const App = () => {
     <div>
       {/* <Accordion sample={sample} /> */}
       {/* <SearchBar /> */}
-      {/* <Dropdown
+      <Dropdown
         selected={selected}
         onSelectedChange={setSelected}
         options={options}
-      /> */}
-      <SearchBar/>
+      />
+      {/* <SearchBar/> */}
     </div>
   );
 };
