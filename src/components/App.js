@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Accordion from "./Accordion";
 import Dropdown from "./Dropdown";
 import SearchBar from "./SearchBar";
+import Translate from "./Translate";
 import "../index.css";
 
 const sample = [
@@ -21,34 +22,18 @@ const sample = [
   },
 ];
 
-const options = [
-  {
-    label: "This color is Red",
-    value: "Red",
-  },
-  {
-    label: "This color is Green",
-    value: "Green",
-  },
-  {
-    label: "A Shade of blue",
-    value: "Blue",
-  },
-];
+
 
 const App = () => {
-  const [selected, setSelected] = useState(options[0]);
+
 
   return (
     <div>
       {/* <Accordion sample={sample} /> */}
       {/* <SearchBar /> */}
-      <Dropdown
-        selected={selected}
-        onSelectedChange={setSelected}
-        options={options}
-      />
+     
       {/* <SearchBar/> */}
+      <Translate />
     </div>
   );
 };

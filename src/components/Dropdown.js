@@ -1,7 +1,7 @@
 // rfce react boiler plate
 import React, { useState, useEffect, useRef } from "react";
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, language, onSelectedChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef();
 
@@ -21,7 +21,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 
   const renderedOptions = options.map((option) => {
     //   handing selected item(removing from dropdown)
-    if (option.value === selected.value) {
+    if (option.value === language.value) {
       // null in react mans don't render anything
       return null;
     }
@@ -40,7 +40,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   return (
     <div ref={ref} className="ui form container">
       <div className="field">
-        <label className="label">Select a color</label>
+        <label className="label">{label}</label>
         <div
           onClick={() => {
             setIsOpen(!isOpen);
@@ -48,7 +48,7 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
           className={`ui selection dropdown {${isOpen ? "visible active" : ""}`}
         >
           <i className="dropdown icon"></i>
-          <div className="text">{selected.label}</div>
+          <div className="text">{language.label}</div>
           <div className={`menu ${isOpen ? "visible transition" : ""}`}>
             {renderedOptions}
           </div>
